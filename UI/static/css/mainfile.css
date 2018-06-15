@@ -1,0 +1,74 @@
+
+
+body{
+    background:url(../image/shabunah.png);
+    background-position:center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 120%;
+    background-size: cover;
+    align-content: center;
+    text-align: center;
+        
+}
+
+    h4,h2,h1{
+        color: maroon;
+        text-align: center;
+        
+
+        }
+    
+   th,td {       
+          border: 6px solid rgb(176, 184, 230);
+    }
+    th,td{
+        background-color:wheat;
+        
+
+    }
+    container{
+        text-align: center
+
+    }
+    form{
+        display: inline-block;
+        
+    }
+
+    
+      
+      .topnav {
+        overflow: hidden;
+        background-color: grey;
+      }
+      
+      .topnav a {
+        float: left;
+        color: wheat;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+      }
+      
+      .topnav a:hover {
+        background-color: whitesmoke;
+        color: black;
+      }
+      
+      .topnav a.active {
+        background-color: white;
+      }
+
+      select,input[type=text],input[type=password],input[type=contact_number],input[type=city],input[type=Liecence_plate],input[type=Liecence_number],
+      input[type=car_type],input[type=number] {
+    
+      
+margin: 8px 0;
+padding: 8px 10px;
+display: inline-block;
+
+    }
+
+        
