@@ -2,14 +2,7 @@ from flask import jsonify, request
 from app import app
 from app.model import Offer
 
-All_offers = [{
-    "driver_name": "Shab",
-    "car_type": "Benz",
-    "licence_plate": "UAB 221Q",
-    "contact": "079435337",
-    "cost_per_km": "200",
-    "location": "kulambiro"
-    }]
+All_offers = []
 
 @app.route("/api/v1/driver/addoffer", methods=["POST"])
 def add_offer():
