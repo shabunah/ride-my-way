@@ -43,7 +43,7 @@ def fetch_offers():
         return jsonify({"message":"No avaiable offer"})
     
     #if there is more than one offer
-    if len(All_offers) >= 1:
+    if len(All_offers) > 0:
         return jsonify({
             "message":"Available offers",
             "offers":[

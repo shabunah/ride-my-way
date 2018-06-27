@@ -51,10 +51,9 @@ class Offer:
 
 class Request:
     """Class to represent the Request model"""
-    def __init__(self,Passenger_name,Location,pickup,Contact):
+    def __init__(self,Passenger_name,pickup,Contact):
         self.id = id
         self.Passenger_name = Passenger_name
-        self.Location = Location
         self.pickup = pickup
         self.Contact = Contact
 
@@ -62,7 +61,6 @@ class Request:
         " json representation of the Offer model"
         return json.dumps({ 
         'Passenger_name':self.Passenger_name,
-        'Location':self.Location,
         'pickup':self.pickup,
         'Contact':self.Contact,
         })
