@@ -1,42 +1,50 @@
-from flask import Flask
-from flask_testing import TestCase
+import unittest
 from run import app
 import json
 from app.model import Driver, Offer,Passenger,Request
 
-class DriverModelTest(TestCase):
+class DriverModelTest(unittest.TestCase):
 
-    def create_app(self):
-        app = Flask(__name__)
-        app.config['TESTING'] = True
-
-        return app
+    def setUp(self):
+        self.app=app.test_client()
 
 
     def test_create_offer(self):
-        create = Offer("1", "Joan Nakito","Vitiz","UBC 160N","0779684513","Natete","200")      
-        self.assertEqual(create.driver_name,"Joan Nakito")
-        self.assertEqual(create.car_type,"Vitiz")
-        self.assertEqual(create.licence_number,"UBC 160N")
-        self.assertEqual(create.contact,"0779684513")
-        self.assertEqual(create.location,"Natete")
-        self.assertEqual(create.cost_per_km,"200")
+        response = self.app.post("api/v1/driver/addoffer",
+            data=json.dumps(dict(driver_name="shab",car_type= "Benz",licence_plate="UAB 221Q",contact= "079435337",cost_per_km= "200",location="kulambiro")),
+            content_type="application/json"
+            
+            )
+        response_data=json.loads(response.data)  
+        self.assertEqual(response.status_code,201)
+        self.assertEqual(response_data["message"],"successfully added")
+
+    def test_create_missing_parameter(self):
+        response = self.app.post("api/v1/driver/addoffer",
+            data=json.dumps(dict(driver_name="shab",licence_plate="UAB 221Q",contact= "079435337",cost_per_km= "200",location="kulambiro")),
+            content_type="application/json"
+            
+            )
+        response_data=json.loads(response.data)  
+        self.assertEqual(response.status_code,400)
+        self.assertEqual(response_data["message"],"incorrect car_type parameter")
 
 
 
 
 
 
-class PassengerModelTest(TestCase):
 
-    def request_app(self):
-        return app
+# class PassengerModelTest(TestCase):
 
-    def test_request_ride(self):
-        request= Request("1","Passenger_name","pickup","Contact" )      
-        self.assertEqual(request.Passenger_name,"Joan Arinanye ")
-        self.assertEqual(request.pickup,"kyanja")
-        self.assertEqual(create.contact,"0779686513")
+#     def request_app(self):
+#         return app
+
+#     def test_request_ride(self):
+#         request= Request("1","Passenger_name","pickup","Contact" )      
+#         self.assertEqual(request.Passenger_name,"Joan Arinanye ")
+#         self.assertEqual(request.pickup,"kyanja")
+#         self.assertEqual(create.contact,"0779686513")
         
 
 
